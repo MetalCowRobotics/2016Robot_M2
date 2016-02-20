@@ -15,18 +15,21 @@ public class Turret extends PIDSubsystem {
 	private final CANTalon motorYaw;
 	private final DigitalInput limitSwitch;
 	private final Potentiometer stringPot;
+	private final double startYawCount;
+
 	
 	private final static int GEARSGR = 3;
 	private final static int PLANETARYGR = 71;
 	private final static int PPR = 7;
 
 	private final static int COUNT_PER_DEG_PITCH = (GEARSGR * PLANETARYGR * PPR) / 360;
-
+	
 	private final static int COUNT_PER_DEG_YAW = 100 / 360;
 	
-	final static int MID = 38;
-	final static int PITCH_MIN_ANGLE = 20 + MID;
-	final static int PITCH_MAX_ANGLE = 85 + MID;
+	private final static int MID = 38;
+	private final static int PITCH_MIN_ANGLE = 20 + MID;
+	private final static int PITCH_MAX_ANGLE = 85 + MID;
+	
 	
 	public Turret() {
 		super("turret", 3, 0, 0);
@@ -34,6 +37,7 @@ public class Turret extends PIDSubsystem {
 		motorYaw = new CANTalon(1);
 		motorPitch = new CANTalon(3);
 		stringPot = new AnalogPotentiometer(0, 1000 , 0);
+		startYawCount = stringPot.get();
 		limitSwitch = new DigitalInput(8);
 		
 		motorPitch.setControlMode(TalonControlMode.Position.value);
@@ -53,7 +57,7 @@ public class Turret extends PIDSubsystem {
 	}
 
 	public void setYawAngle(int angle) {
-		setSetpoint(angle * COUNT_PER_DEG_YAW);
+		setSetpoint((angle * COUNT_PER_DEG_YAW) + startYawCount);
 	}
 	
 	public void setPitchAngle(int angle) {
@@ -72,18 +76,27 @@ public class Turret extends PIDSubsystem {
 		return stringPot.get() / COUNT_PER_DEG_YAW;
 	}
 	
-	public void stop() {
-		// TODO
+	public void setPitchSpeed(int speed){
+		motorPitch.setControlMode(TalonControlMode.PercentVbus.value);
+		motorPitch.set(speed);
+		motorPitch.setControlMode(TalonControlMode.Position.value);
+
 	}
-
-
+	
+	public void setYawSpeed(int speed){
+		motorYaw.set(speed);
+	}
+	
+	public void stop() {
+		setYawSpeed(0);
+		setPitchSpeed(0);
+		
+	}
 
 	@Override
 	protected double returnPIDInput() {
 		return stringPot.pidGet();
 	}
-
-
 
 	@Override
 	protected void usePIDOutput(double output) {
@@ -91,5 +104,7 @@ public class Turret extends PIDSubsystem {
 			motorYaw.set(output);
 		}
 	}
+	
+	
 
 }
