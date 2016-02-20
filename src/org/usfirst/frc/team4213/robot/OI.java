@@ -1,11 +1,13 @@
 package org.usfirst.frc.team4213.robot;
 
 import org.team4213.lib14.AIRFLOController;
+import org.usfirst.frc.team4213.robot.commands.CreepDrive;
+import org.usfirst.frc.team4213.robot.commands.IntakeBall;
+import org.usfirst.frc.team4213.robot.commands.NormalDrive;
+import org.usfirst.frc.team4213.robot.commands.SprintDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 
@@ -44,7 +46,6 @@ public class OI {
 	private Joystick driver = new AIRFLOController(0);
 	private Joystick gunner = new AIRFLOController(1);
 	
-
     public OI() {
     	setupDashboard();
         setupDriverController();
@@ -73,24 +74,39 @@ public class OI {
         JoystickButton rightTrigger = new JoystickButton(driver, 8);
 
         // Connect the buttons to commands
+        
         /******These do nothing for Driver right now
          * Driver does not have any button commands
          * Other than CRAWL and SPRINT
          * These will be COMMANDS for the DRIVETRAIN
          * COMMANDS will map to the buttons
          * 
-         * 
+         */
+        
+        
+       // leftBumper.whileHeld(new TankButtonTest());
+       // rightBumper.whileHeld(new TankButtonTestReverse());;
+        
 //        d_up.whenPressed();  //may need whileHeld
 //        d_down.whenPressed();
 //        d_right.whenPressed();
 //        d_left.whenPressed();
-//        
-//        leftBumper.whenPressed(); //crawl
-//        rightBumper.whenPressed(); //crawl
-//
-//		  leftTrigger.whenPressed(); //Sprint
-//        rightTrigger.whenPressed(); //Sprint
-        *******/
+        
+        leftBumper.whenPressed(new CreepDrive()); //crawl
+        rightBumper.whenPressed(new CreepDrive()); //crawl
+        
+		leftTrigger.whenPressed(new SprintDrive()); //Sprint
+        rightTrigger.whenPressed(new SprintDrive()); //Sprint
+        
+        leftBumper.whenReleased(new NormalDrive());
+        rightBumper.whenReleased(new NormalDrive()); //crawl
+        
+		leftTrigger.whenReleased(new NormalDrive()); //Sprint
+        rightTrigger.whenReleased(new NormalDrive()); //Sprint
+        
+        d_down.whileHeld(new IntakeBall());
+        
+        
         
         
     }
@@ -117,7 +133,7 @@ public class OI {
 //        d_down.whenPressed(); //
 //        d_right.whenPressed(); //
 //        d_left.whenPressed(); //
-//        
+//
 //        leftBumper.whenPressed(); //pressed rotate kicker to fire ball
 //        leftTrigger.whenPressed(); //held=turret to firing minheight
 //        
