@@ -4,22 +4,28 @@ import org.usfirst.frc.team4213.robot.Robot;
 
 //import org.usfirst.frc.team4213.robot.Robot;
 
+
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TankDriveWithJoystick extends Command {
+public class TankButtonTestReverse extends Command {
     
-    public TankDriveWithJoystick() {
+    public TankButtonTestReverse() {
         requires(Robot.drivetrain);
     }
 
     // Called just before this Command runs the f iirst time
-    protected void initialize() {
-    }
+    protected void initialize() {}
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        Robot.drivetrain.drive(Robot.oi.getDriverJoystick(), true);
+        //Robot.drivetrain.drive(Robot.oi.getDriverJoystick(), true);
+
         
+        Robot.drivetrain.drive(-.25,-.25, true);
+        DriverStation.reportError("Button REVERSE<<<<<<<", false);
+        
+       
     }
 
     // Make this return true when this Command no longer needs to run execute()
