@@ -16,7 +16,7 @@ public class FireBall extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.kicker.Stop();
+		Robot.kicker.move360();
 		Robot.cannonWheels.stopWheels();
 		// TODO: zero the turret
 	}
@@ -24,14 +24,14 @@ public class FireBall extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.kicker.kick();
+		Robot.kicker.move360();
 		Robot.cannonWheels.shootBall();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		// TODO add when button is undpressed finish
+		// TODO add when button is unpressed finish
 	}
 
 	// Called once after isFinished returns true

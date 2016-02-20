@@ -6,6 +6,7 @@ import org.usfirst.frc.team4213.robot.subsystems.BallDetector;
 import org.usfirst.frc.team4213.robot.subsystems.CannonWheels;
 import org.usfirst.frc.team4213.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4213.robot.subsystems.Intake;
+import org.usfirst.frc.team4213.robot.subsystems.Kicker;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -44,6 +45,7 @@ public class Robot extends IterativeRobot {
 		cannonWheels = new CannonWheels();
 		ballDetector = new BallDetector();
 		kicker = new Kicker();
+
 		chooser = new SendableChooser();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
