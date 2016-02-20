@@ -4,7 +4,12 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class CannonWheels extends Subsystem {
-	CANTalon cannonWheels = new CANTalon(4);
+	CANTalon cannonWheels;
+
+	public CannonWheels() {
+		cannonWheels = new CANTalon(4);
+
+	}
 
 	@Override
 	public void initDefaultCommand() {

@@ -19,8 +19,9 @@ public class Intake extends Subsystem {
 	public void log() {
 	}
 
-	public Intake(CANTalon intakeMotorController) {
-		intakeMotor = intakeMotorController;
+	public Intake() {
+		super();
+		intakeMotor = new CANTalon(2);
 	}
 
 	public void intake(double speed) {
