@@ -1,13 +1,13 @@
 package org.usfirst.frc.team4213.robot.subsystems;
 
-import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class CannonWheels extends Subsystem {
-	CANTalon cannonWheels;
+	Jaguar cannonWheels;
 
 	public CannonWheels() {
-		cannonWheels = new CANTalon(4);
+		cannonWheels = new Jaguar(4);
 
 	}
 

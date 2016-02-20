@@ -7,7 +7,6 @@ import org.usfirst.frc.team4213.robot.commands.TankDriveWithJoystick;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -25,14 +24,14 @@ public class DriveTrain extends Subsystem {
 	
 	public DriveTrain(){
 		super();
-		left_motor = new Spark(9);
+		left_motor = new Talon(9);
 		right_motor = new Talon(8);  //Spark got fried with a loose bolt
 		drive = new RobotDrive(left_motor, right_motor);
 		
 
 		// Let's show everything on the LiveWindow
-		LiveWindow.addActuator("Drive Train", "Right Motor", (Spark) right_motor);
-		LiveWindow.addActuator("Drive Train", "Left Motor", (Spark) left_motor);
+		LiveWindow.addActuator("Drive Train", "Right Motor", (Talon) right_motor);
+		LiveWindow.addActuator("Drive Train", "Left Motor", (Talon) left_motor);
 	}
 
 	/**
@@ -57,7 +56,7 @@ public class DriveTrain extends Subsystem {
 	 * @param right Speed in range [-1,1]
 	 */
 	public void drive(double throttle, double spin, boolean squareUnits) {
-		drive.tankDrive(throttle, spin, squareUnits);
+		drive.arcadeDrive(throttle, spin, squareUnits);
 	}
 
 	/**
