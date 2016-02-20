@@ -1,18 +1,17 @@
 
 package org.usfirst.frc.team4213.robot;
 
-import org.usfirst.frc.team4213.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4213.robot.commands.TankDriveWithJoystick;
 import org.usfirst.frc.team4213.robot.subsystems.BallDetector;
 import org.usfirst.frc.team4213.robot.subsystems.CannonWheels;
 import org.usfirst.frc.team4213.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team4213.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4213.robot.subsystems.Intake;
 import org.usfirst.frc.team4213.robot.subsystems.Kicker;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -26,13 +25,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static OI oi;
 	public static Intake intake;
 	public static Kicker kicker;
 	public static CannonWheels cannonWheels;
 	public static BallDetector ballDetector;
 	public static DriveTrain drivetrain;
+	public static OI oi;
+
 	Command autonomousCommand;
 	SendableChooser chooser;
 
@@ -42,7 +41,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI();
 
 		intake = new Intake();
 		cannonWheels = new CannonWheels();
@@ -51,9 +49,10 @@ public class Robot extends IterativeRobot {
 		drivetrain = new DriveTrain();
 
 		chooser = new SendableChooser();
-		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		oi = new OI();
+
 	}
 
 	/**
@@ -122,6 +121,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		drivetrain.drive(oi.getDriverJoystick(), true);
+		DriverStation.reportError("\n Multiplier : "+drivetrain.getMultiplier(), false);
 	}
 
 	/**
