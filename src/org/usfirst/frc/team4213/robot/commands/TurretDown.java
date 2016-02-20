@@ -4,9 +4,9 @@ import org.usfirst.frc.team4213.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class TurretUp extends Command {
+public class TurretDown extends Command {
 
-	public TurretUp() {
+	public TurretDown() {
 		requires(Robot.turretVertical);
 	}
 
@@ -19,7 +19,7 @@ public class TurretUp extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.turretVertical.moveUp();
+		Robot.turretVertical.moveDown();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -35,7 +35,7 @@ public class TurretUp extends Command {
 		// can to fall out
 		// + there is no need to worry about stalling the motor or crushing the
 		// can.
-		Robot.turretUp.stop();
+		Robot.turretDown.stop();
 	}
 
 	// Called when another command which requires one or more of the same
