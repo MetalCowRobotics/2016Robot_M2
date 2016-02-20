@@ -7,6 +7,7 @@ import org.usfirst.frc.team4213.robot.commands.NormalDrive;
 import org.usfirst.frc.team4213.robot.commands.RaiseTurret;
 import org.usfirst.frc.team4213.robot.commands.RotateTurret180;
 import org.usfirst.frc.team4213.robot.commands.SprintDrive;
+import org.usfirst.frc.team4213.robot.commands.TurretZeroYaw;
 import org.usfirst.frc.team4213.robot.commands.ZeroTurretYaw;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -68,13 +69,13 @@ public class OI {
     	
     	// Create some buttons
         JoystickButton d_up = new JoystickButton(driver, 4);
-        JoystickButton d_right= new JoystickButton(driver, 2);
+        JoystickButton d_right= new JoystickButton(driver, 2); //zeroTurret
         JoystickButton d_down= new JoystickButton(driver, 1);
         JoystickButton d_left = new JoystickButton(driver, 3);
-        JoystickButton leftBumper = new JoystickButton(driver, 5);
-        JoystickButton leftTrigger = new JoystickButton(driver, 7);
-        JoystickButton rightBumper = new JoystickButton(driver, 6);
-        JoystickButton rightTrigger = new JoystickButton(driver, 8);
+        JoystickButton leftBumper = new JoystickButton(driver, 5); //sprint
+        JoystickButton leftTrigger = new JoystickButton(driver, 7); //creep
+        JoystickButton rightBumper = new JoystickButton(driver, 6); //sprint
+        JoystickButton rightTrigger = new JoystickButton(driver, 8); //creep
 
         // Connect the buttons to commands
         
@@ -111,10 +112,8 @@ public class OI {
         
         d_down.whileHeld(new IntakeBall());
         
-        //d_right.whenPressed(new ZeroTurretYaw());
-        d_left.whenPressed(new RotateTurret180());
-        
-        
+        //zeroTurret
+        d_right.whileHeld(new TurretZeroYaw());
         
     }
     
@@ -130,7 +129,6 @@ public class OI {
         JoystickButton leftTrigger = new JoystickButton(gunner, 7);
         JoystickButton rightBumper = new JoystickButton(gunner, 6);
         JoystickButton rightTrigger = new JoystickButton(gunner, 8);
-        JoystickButton center_9 = new JoystickButton(gunner, 9);
         JoystickButton center_10 = new JoystickButton(gunner, 10);
         JoystickButton center_11 = new JoystickButton(gunner, 11);
 

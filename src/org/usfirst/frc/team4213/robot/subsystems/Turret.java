@@ -17,6 +17,7 @@ public class Turret extends PIDSubsystem {
 	}
 
 	private final CANTalon motorPitch;
+	
 	private final CANTalon motorYaw;
 	private final DigitalInput limitSwitch;
 	private final Potentiometer stringPot;
@@ -38,7 +39,7 @@ public class Turret extends PIDSubsystem {
 	private final static int PITCH_MAX_ANGLE = 85 + MID;
 	
 	private final static int OFFSET_YAW = 0;
-	private final static int YAW_START_COUNT = 500 + OFFSET_YAW;
+	public final static int YAW_START_COUNT = 500 + OFFSET_YAW; // TODO Private + Getter
 	private final static int YAW_MAX_COUNT = 600 + OFFSET_YAW;
 	private final static int YAW_MIN_COUNT = 400 + OFFSET_YAW;
 
@@ -85,7 +86,11 @@ public class Turret extends PIDSubsystem {
 	}
 	
 	public double getYawAngle(){
-		return stringPot.get() / COUNT_PER_DEG_YAW;
+		return (stringPot.get() - startYawCount) / COUNT_PER_DEG_YAW;
+	}
+	
+	public double getYawCount(){
+		return stringPot.get();
 	}
 	
 	public void setPitchSpeed(int speed){
