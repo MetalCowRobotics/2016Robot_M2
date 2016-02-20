@@ -16,7 +16,7 @@ public class Kicker extends PIDSubsystem {
 	private final static int COUNT_PER_DEG = ( GEARSGR * PLANETARYGR * PPR ) / 360;
 	
 	public Kicker(){
-		super("kicker",0, 0, 0);
+		super("kicker",3, 0, 0);
 		encoder = new Encoder(4,5);
 		motor = new CANTalon(0);
 		getPIDController().setContinuous(false);
