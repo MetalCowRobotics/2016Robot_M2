@@ -4,10 +4,7 @@ import org.team4213.lib14.AIRFLOController;
 import org.usfirst.frc.team4213.robot.commands.CreepDrive;
 import org.usfirst.frc.team4213.robot.commands.IntakeBall;
 import org.usfirst.frc.team4213.robot.commands.NormalDrive;
-import org.usfirst.frc.team4213.robot.commands.RaiseTurret;
-import org.usfirst.frc.team4213.robot.commands.RotateTurret180;
 import org.usfirst.frc.team4213.robot.commands.SprintDrive;
-import org.usfirst.frc.team4213.robot.commands.ZeroTurretYaw;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -97,8 +94,6 @@ public class OI {
         
         leftBumper.whenPressed(new CreepDrive()); //crawl
         rightBumper.whenPressed(new CreepDrive()); //crawl
-     
-        //d_right.whenPressed(new RaiseTurret());
         
 		leftTrigger.whenPressed(new SprintDrive()); //Sprint
         rightTrigger.whenPressed(new SprintDrive()); //Sprint
@@ -111,8 +106,6 @@ public class OI {
         
         d_down.whileHeld(new IntakeBall());
         
-        //d_right.whenPressed(new ZeroTurretYaw());
-        d_left.whenPressed(new RotateTurret180());
         
         
         
