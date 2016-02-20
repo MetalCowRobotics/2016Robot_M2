@@ -46,4 +46,11 @@ public class Kicker extends PIDSubsystem {
 		setSetpoint(COUNT_PER_DEG * angle);
 	}
 	
+	public void move180(){
+		setAngle(180+(encoder.get()/COUNT_PER_DEG));
+	}
+	
+	public void stop(){
+		motor.set(0);
+	}
 }
