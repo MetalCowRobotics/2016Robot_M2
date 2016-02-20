@@ -32,7 +32,8 @@ public class Intake extends Subsystem {
 		intakeMotor.set(0);
 	}
 
-	public void ballIntaked() {
-
+	public void reverseIntake() {
+		intakeMotor.set(-1.0);
 	}
+
 }

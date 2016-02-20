@@ -4,9 +4,9 @@ import org.usfirst.frc.team4213.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class IntakeBall extends Command {
+public class EjectBall extends Command {
 
-	public IntakeBall() {
+	public EjectBall() {
 		requires(Robot.intake);
 		requires(Robot.cannonWheels);
 		// TODO: add turret
@@ -23,14 +23,14 @@ public class IntakeBall extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.intake.intake();
-		Robot.cannonWheels.intakeBall();
+		Robot.intake.reverseIntake();
+		Robot.cannonWheels.ejectBall();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return Robot.ballDetector.ballContact();
+		// TODO: add when button is released return is finished.
 	}
 
 	// Called once after isFinished returns true
@@ -41,6 +41,7 @@ public class IntakeBall extends Command {
 		// + there is no need to worry about stalling the motor or crushing the
 		// can.
 		Robot.intake.intakeStop();
+		Robot.cannonWheels.stopWheels();
 	}
 
 	// Called when another command which requires one or more of the same

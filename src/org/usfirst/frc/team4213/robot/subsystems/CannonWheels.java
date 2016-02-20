@@ -24,8 +24,12 @@ public class CannonWheels extends Subsystem {
 		cannonWheels.set(.6);
 	}
 
+	public void ejectBall() {
+		cannonWheels.set(-0.6);
+	}
+
 	public void intakeBall() {
-		cannonWheels.set(-1.0);
+		cannonWheels.set(-0.7);
 	}
 
 	public void stopWheels() {
