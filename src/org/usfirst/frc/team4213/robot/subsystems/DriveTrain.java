@@ -5,9 +5,10 @@ import org.team4213.lib14.AIRFLOController;
 import org.usfirst.frc.team4213.robot.commands.TankDriveWithJoystick;
 
 
+
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -22,27 +23,32 @@ public class DriveTrain extends Subsystem {
 
 	private RobotDrive drive;
 	private SpeedController left_motor, right_motor;
+	private double multiplier = 1;
 	
 	public DriveTrain(){
 		super();
-		left_motor = new Spark(9);
-		right_motor = new Talon(8);  //Spark got fried with a loose bolt
+		left_motor = new Talon(1); //9
+		right_motor = new Talon(0);  //8
 		drive = new RobotDrive(left_motor, right_motor);
 		
 
 		// Let's show everything on the LiveWindow
-		LiveWindow.addActuator("Drive Train", "Right Motor", (Spark) right_motor);
-		LiveWindow.addActuator("Drive Train", "Left Motor", (Spark) left_motor);
+		//LiveWindow.addActuator("Drive Train", "Right Motor", (Spark) right_motor);
+		//LiveWindow.addActuator("Drive Train", "Left Motor", (Spark) left_motor);
+		
+		LiveWindow.addActuator("Drive Train", "Right Motor", (Talon) right_motor);
+		LiveWindow.addActuator("Drive Train", "Left Motor", (Talon) left_motor);
 	}
 
 	/**
 	 * When no other command is running let the operator drive around
 	 * using the PS3 joystick.
 	 */
+	
 	public void initDefaultCommand() {
-		setDefaultCommand(new TankDriveWithJoystick());
+		//setDefaultCommand(new TankDriveWithJoystick());
 	}
-
+	
 	/**
 	 * The log method puts interesting information to the SmartDashboard.
 	 */
@@ -56,15 +62,29 @@ public class DriveTrain extends Subsystem {
 	 * @param left Speed in range [-1,1]
 	 * @param right Speed in range [-1,1]
 	 */
-	public void drive(double throttle, double spin, boolean squareUnits) {
-		drive.tankDrive(throttle, spin, squareUnits);
+	public void drive(double leftStick, double rightStick, boolean squareUnits) {
+		drive.arcadeDrive(leftStick, rightStick, squareUnits); //ArcadeMode
+		
+		//drive.tankDrive(leftStick, rightStick, squareUnits);
+        //DriverStation.reportError("Tank Drive  [[ " + leftStick + " ]]  "+"  [[  " + rightStick + " ]]", false);
 	}
 
 	/**
 	 * @param joy The ps3 style joystick to use to drive tank style.
 	 */
 	public void drive(Joystick driverController, boolean squareUnits) {
-		drive(((AIRFLOController) driverController).getLY(), ((AIRFLOController) driverController).getRX(), squareUnits);
+		drive(((AIRFLOController) driverController).getLY() * multiplier, ((AIRFLOController) driverController).getRX() * multiplier, squareUnits); //ArcadeMode
+		
+		//drive(((AIRFLOController) driverController).getLY(), ((AIRFLOController) driverController).getRY(), squareUnits); //TankMode
+	}
+	
+	public void setMultiplier(double multiplier){
+		this.multiplier = multiplier;
+		
+	}
+
+	public double getMultiplier() {
+		return multiplier;
 	}
 
 }
