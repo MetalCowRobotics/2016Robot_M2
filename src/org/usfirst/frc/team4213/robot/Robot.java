@@ -7,6 +7,7 @@ import org.usfirst.frc.team4213.robot.subsystems.CannonWheels;
 import org.usfirst.frc.team4213.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4213.robot.subsystems.Intake;
 import org.usfirst.frc.team4213.robot.subsystems.Kicker;
+// import org.usfirst.frc.team4213.robot.subsystems.TurretVertical
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -28,6 +29,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Intake intake;
 	public static Kicker kicker;
+	public static TurretVertical turretVertical
 	public static CannonWheels cannonWheels;
 	public static BallDetector ballDetector;
 	Command autonomousCommand;
@@ -45,7 +47,7 @@ public class Robot extends IterativeRobot {
 		cannonWheels = new CannonWheels();
 		ballDetector = new BallDetector();
 		kicker = new Kicker();
-
+		turretVertical = new TurretVertical();
 		chooser = new SendableChooser();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
