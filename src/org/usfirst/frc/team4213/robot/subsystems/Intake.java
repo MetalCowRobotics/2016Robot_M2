@@ -24,11 +24,15 @@ public class Intake extends Subsystem {
 		intakeMotor = new CANTalon(2);
 	}
 
-	public void intake(double speed) {
-		intakeMotor.set(speed);
+	public void intake() {
+		intakeMotor.set(1.0);
 	}
 
 	public void intakeStop() {
 		intakeMotor.set(0);
+	}
+
+	public void ballIntaked() {
+
 	}
 }
