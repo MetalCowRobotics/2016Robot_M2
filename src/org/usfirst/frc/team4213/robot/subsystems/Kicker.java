@@ -11,8 +11,8 @@ public class Kicker extends PIDSubsystem {
 	private final static int GEARSGR = 3;
 	private final static int PLANETARYGR = 27;
 	private final static int PPR = 7;
-
-	private static int RIGHT_ANGLE;
+	private int count180 = 0;
+	private int RIGHT_ANGLE;
 
 	private final static int COUNT_PER_DEG = (GEARSGR * PLANETARYGR * PPR) / 360;
 
@@ -52,6 +52,10 @@ public class Kicker extends PIDSubsystem {
 
 	public void move180() {
 		setAngle(180 + (encoder.get() / COUNT_PER_DEG));
+		if(count180++ > 1){
+			RIGHT_ANGLE += 360;
+			count180 = 0;
+		}
 	}
 
 	public void stop() {
