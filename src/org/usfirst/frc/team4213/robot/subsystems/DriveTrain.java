@@ -4,13 +4,12 @@ package org.usfirst.frc.team4213.robot.subsystems;
 import org.team4213.lib14.AIRFLOController;
 import org.usfirst.frc.team4213.robot.commands.TankDriveWithJoystick;
 
-import edu.wpi.first.wpilibj.CANTalon;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -27,7 +26,7 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain(){
 		super();
 		left_motor = new Spark(9);
-		right_motor = new Spark(8);
+		right_motor = new Talon(8);  //Spark got fried with a loose bolt
 		drive = new RobotDrive(left_motor, right_motor);
 		
 
