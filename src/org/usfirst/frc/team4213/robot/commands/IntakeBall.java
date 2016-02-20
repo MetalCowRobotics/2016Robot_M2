@@ -9,12 +9,14 @@ public class IntakeBall extends Command {
 	public IntakeBall() {
 		requires(Robot.intake);
 		requires(Robot.cannonWheels);
+		// TODO: add turret
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
 		Robot.intake.intakeStop();
+		// TODO: zero the turret
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -27,7 +29,7 @@ public class IntakeBall extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return Robot.intake.ballIntaked();
+		return Robot.ballDetector.ballContact();
 	}
 
 	// Called once after isFinished returns true
