@@ -26,6 +26,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 	public static Intake intake;
+	public static Kicker kicker;
 	public static CannonWheels cannonWheels;
 	public static BallDetector ballDetector;
 	Command autonomousCommand;
@@ -42,7 +43,7 @@ public class Robot extends IterativeRobot {
 		intake = new Intake();
 		cannonWheels = new CannonWheels();
 		ballDetector = new BallDetector();
-
+		kicker = new Kicker();
 		chooser = new SendableChooser();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
