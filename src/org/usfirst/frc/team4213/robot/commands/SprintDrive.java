@@ -2,6 +2,7 @@ package org.usfirst.frc.team4213.robot.commands;
 
 import org.usfirst.frc.team4213.robot.Robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class SprintDrive extends Command {
@@ -19,6 +20,7 @@ public class SprintDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		DriverStation.reportError("setting multiplier to 1", false);
 		Robot.drivetrain.setMultiplier(1);
 	}
 

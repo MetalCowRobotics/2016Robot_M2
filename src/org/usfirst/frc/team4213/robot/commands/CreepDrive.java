@@ -2,6 +2,7 @@ package org.usfirst.frc.team4213.robot.commands;
 
 import org.usfirst.frc.team4213.robot.Robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class CreepDrive extends Command {
@@ -19,6 +20,8 @@ public class CreepDrive extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		DriverStation.reportError("setting multiplier to .2", false);
+
 		Robot.drivetrain.setMultiplier(.2);
 	}
 
