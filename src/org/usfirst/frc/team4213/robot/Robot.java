@@ -5,7 +5,7 @@ import org.usfirst.frc.team4213.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4213.robot.subsystems.BallDetector;
 import org.usfirst.frc.team4213.robot.subsystems.CannonWheels;
 import org.usfirst.frc.team4213.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team4213.robot.subsystems.Intake;import org.usfirst.frc.team4213.robot.subsystems.Kicker
+import org.usfirst.frc.team4213.robot.subsystems.Intake;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
