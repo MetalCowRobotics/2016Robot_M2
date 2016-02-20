@@ -41,8 +41,8 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 	
-	private Joystick driver = new Joystick(0);
-	private Joystick gunner = new Joystick(1);
+	private Joystick driver = new AIRFLOController(0);
+	private Joystick gunner = new AIRFLOController(1);
 	
 
     public OI() {
@@ -51,11 +51,11 @@ public class OI {
         setupGunnerController();
     }
     
-    public Joystick Driver(){
+    public Joystick getDriverJoystick(){
     	return driver;
     }
     
-    public Joystick Gunner(){
+    public Joystick getGunnerJoystick(){
     	return gunner;
     }
     

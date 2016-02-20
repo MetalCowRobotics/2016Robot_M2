@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4213.robot.subsystems;
 
+import org.team4213.lib14.AIRFLOController;
 import org.usfirst.frc.team4213.robot.commands.TankDriveWithJoystick;
 
 import edu.wpi.first.wpilibj.CANTalon;
@@ -63,8 +64,8 @@ public class DriveTrain extends Subsystem {
 	/**
 	 * @param joy The ps3 style joystick to use to drive tank style.
 	 */
-	public void drive(AIRFLOController driverController, boolean squareUnits) {
-		drive(driverController.getLY(), driverController.getRX(), squareUnits);
+	public void drive(Joystick driverController, boolean squareUnits) {
+		drive(((AIRFLOController) driverController).getLY(), ((AIRFLOController) driverController).getRX(), squareUnits);
 	}
 
 }
