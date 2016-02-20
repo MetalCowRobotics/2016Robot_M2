@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4213.robot;
 
 import org.team4213.lib14.AIRFLOController;
+import org.team4213.lib14.Xbox360Controller;
 import org.usfirst.frc.team4213.robot.commands.CreepDrive;
 import org.usfirst.frc.team4213.robot.commands.IntakeBall;
 import org.usfirst.frc.team4213.robot.commands.NormalDrive;
@@ -48,7 +49,7 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	
 	private Joystick driver = new AIRFLOController(0);
-	private Joystick gunner = new AIRFLOController(1);
+	private Joystick gunner = new Xbox360Controller(1);
 	
     public OI() {
     	setupDashboard();
@@ -121,16 +122,16 @@ public class OI {
     private void setupGunnerController(){
     	
     	// Create some buttons
-        JoystickButton d_up = new JoystickButton(gunner, 4);
-        JoystickButton d_right= new JoystickButton(gunner, 2);
-        JoystickButton d_down= new JoystickButton(gunner, 1);
-        JoystickButton d_left = new JoystickButton(gunner, 3);
-        JoystickButton leftBumper = new JoystickButton(gunner, 5);
-        JoystickButton leftTrigger = new JoystickButton(gunner, 7);
-        JoystickButton rightBumper = new JoystickButton(gunner, 6);
-        JoystickButton rightTrigger = new JoystickButton(gunner, 8);
-        JoystickButton center_10 = new JoystickButton(gunner, 10);
-        JoystickButton center_11 = new JoystickButton(gunner, 11);
+//        JoystickButton d_up = new JoystickButton(gunner, 4);
+//        JoystickButton d_right= new JoystickButton(gunner, 2);
+//        JoystickButton d_down= new JoystickButton(gunner, 1);
+//        JoystickButton d_left = new JoystickButton(gunner, 3);
+//        JoystickButton leftBumper = new JoystickButton(gunner, 5);
+//        JoystickButton leftTrigger = new JoystickButton(gunner, 7);
+//        JoystickButton rightBumper = new JoystickButton(gunner, 6);
+//        JoystickButton rightTrigger = new JoystickButton(gunner, 8);
+//        JoystickButton center_10 = new JoystickButton(gunner, 10);
+//        JoystickButton center_11 = new JoystickButton(gunner, 11);
 
         // Connect the buttons to COMMANDS
         //whenPressed, whenReleased, whenHeld
