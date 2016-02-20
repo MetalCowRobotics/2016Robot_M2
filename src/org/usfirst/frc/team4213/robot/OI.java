@@ -4,7 +4,11 @@ import org.team4213.lib14.AIRFLOController;
 import org.usfirst.frc.team4213.robot.commands.CreepDrive;
 import org.usfirst.frc.team4213.robot.commands.IntakeBall;
 import org.usfirst.frc.team4213.robot.commands.NormalDrive;
+import org.usfirst.frc.team4213.robot.commands.RaiseTurret;
+import org.usfirst.frc.team4213.robot.commands.RotateTurret180;
 import org.usfirst.frc.team4213.robot.commands.SprintDrive;
+import org.usfirst.frc.team4213.robot.commands.TurretZeroYaw;
+import org.usfirst.frc.team4213.robot.commands.ZeroTurretYaw;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -65,13 +69,13 @@ public class OI {
     	
     	// Create some buttons
         JoystickButton d_up = new JoystickButton(driver, 4);
-        JoystickButton d_right= new JoystickButton(driver, 2);
+        JoystickButton d_right= new JoystickButton(driver, 2); //zeroTurret
         JoystickButton d_down= new JoystickButton(driver, 1);
         JoystickButton d_left = new JoystickButton(driver, 3);
-        JoystickButton leftBumper = new JoystickButton(driver, 5);
-        JoystickButton leftTrigger = new JoystickButton(driver, 7);
-        JoystickButton rightBumper = new JoystickButton(driver, 6);
-        JoystickButton rightTrigger = new JoystickButton(driver, 8);
+        JoystickButton leftBumper = new JoystickButton(driver, 5); //sprint
+        JoystickButton leftTrigger = new JoystickButton(driver, 7); //creep
+        JoystickButton rightBumper = new JoystickButton(driver, 6); //sprint
+        JoystickButton rightTrigger = new JoystickButton(driver, 8); //creep
 
         // Connect the buttons to commands
         
@@ -94,6 +98,8 @@ public class OI {
         
         leftBumper.whenPressed(new CreepDrive()); //crawl
         rightBumper.whenPressed(new CreepDrive()); //crawl
+     
+        //d_right.whenPressed(new RaiseTurret());
         
 		leftTrigger.whenPressed(new SprintDrive()); //Sprint
         rightTrigger.whenPressed(new SprintDrive()); //Sprint
@@ -106,8 +112,8 @@ public class OI {
         
         d_down.whileHeld(new IntakeBall());
         
-        
-        
+        //zeroTurret
+        d_right.whileHeld(new TurretZeroYaw());
         
     }
     
@@ -123,7 +129,6 @@ public class OI {
         JoystickButton leftTrigger = new JoystickButton(gunner, 7);
         JoystickButton rightBumper = new JoystickButton(gunner, 6);
         JoystickButton rightTrigger = new JoystickButton(gunner, 8);
-        JoystickButton center_9 = new JoystickButton(gunner, 9);
         JoystickButton center_10 = new JoystickButton(gunner, 10);
         JoystickButton center_11 = new JoystickButton(gunner, 11);
 
