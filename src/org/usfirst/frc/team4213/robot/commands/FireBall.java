@@ -24,14 +24,14 @@ public class FireBall extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.kicker.intake();
-		Robot.cannonWheels.intakeBall();
+		Robot.kicker.kick();
+		Robot.cannonWheels.shootBall();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return Robot.ballDetector.ballContact();
+		// TODO add when button is undpressed finish
 	}
 
 	// Called once after isFinished returns true
@@ -41,7 +41,8 @@ public class FireBall extends Command {
 		// can to fall out
 		// + there is no need to worry about stalling the motor or crushing the
 		// can.
-		Robot.intake.intakeStop();
+		Robot.cannonWheels.stopWheels();
+		Robot.kicker.stop();
 	}
 
 	// Called when another command which requires one or more of the same
