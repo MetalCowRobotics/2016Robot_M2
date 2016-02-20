@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class TurretZeroYaw extends Command{
-	double startPoint = 490;
+	double startPoint = 485;
 
 	public TurretZeroYaw() {
 	}
@@ -22,7 +22,9 @@ public class TurretZeroYaw extends Command{
 	protected void execute() {
 		double error = startPoint - Robot.turret.getYawCount();
 		Robot.turret.setYawSpeed(-error/100);
-
+		if((Math.abs(Robot.turret.getYawCount() - startPoint) < 5) == true){
+			Robot.turret.setYawSpeed(0.4);
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
