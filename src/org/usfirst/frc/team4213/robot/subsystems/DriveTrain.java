@@ -33,9 +33,6 @@ public class DriveTrain extends Subsystem {
 		
 
 		// Let's show everything on the LiveWindow
-		//LiveWindow.addActuator("Drive Train", "Right Motor", (Spark) right_motor);
-		//LiveWindow.addActuator("Drive Train", "Left Motor", (Spark) left_motor);
-		
 		LiveWindow.addActuator("Drive Train", "Right Motor", (Talon) right_motor);
 		LiveWindow.addActuator("Drive Train", "Left Motor", (Talon) left_motor);
 	}
@@ -62,11 +59,13 @@ public class DriveTrain extends Subsystem {
 	 * @param left Speed in range [-1,1]
 	 * @param right Speed in range [-1,1]
 	 */
+
 	public void drive(double leftStick, double rightStick, boolean squareUnits) {
 		drive.arcadeDrive(leftStick, rightStick, squareUnits); //ArcadeMode
 		
 		//drive.tankDrive(leftStick, rightStick, squareUnits);
         //DriverStation.reportError("Tank Drive  [[ " + leftStick + " ]]  "+"  [[  " + rightStick + " ]]", false);
+
 	}
 
 	/**
