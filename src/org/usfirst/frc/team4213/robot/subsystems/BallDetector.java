@@ -8,7 +8,7 @@ public class BallDetector {
 
 	public BallDetector() {
 		super();
-		contact = new DigitalInput(8);
+		//contact = new DigitalInput(4);
 	}
 
 	public void initDefaultCommand() {
